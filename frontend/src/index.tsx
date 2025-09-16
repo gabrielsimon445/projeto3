@@ -1,7 +1,9 @@
-import RegisterLoginForm from './components/loginRegisterForm';
+import { Router } from "./router";
 
-export const app = () => {
-    return (
-        <RegisterLoginForm/>
-    );
-};
+const App = () => {
+  return (
+    <Router/>
+  );
+}
+
+export default App;

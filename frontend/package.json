@@ -15,7 +15,8 @@
   "dependencies": {
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
-    "mysql2": "^3.14.5"
+    "mysql2": "^3.14.5",
+    "react-router-dom": "^7.9.1"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
