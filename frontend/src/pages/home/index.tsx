@@ -1,18 +1,50 @@
 import Header from '../../components/header';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 export default function Home() {
+
+  const navigate = useNavigate();
+
   const options = [
-    'Clientes',
-    'Compras',
-    'Representantes',
-    'Consultas',
-    'Comunicação',
-    'Mensagens',
-    'Produtos',
-    'Ferramentas',
-    'Informações'
+    {
+      nome: "Clientes",
+      linkPage: "/clientes",
+    },
+    {
+      nome: "Compras",
+      linkPage: "/compras",
+    },
+    {
+      nome: "Representantes",
+      linkPage: "/representantes",
+    },
+    {
+      nome: "Consultas",
+      linkPage: "/consultas",
+    },
+    {
+      nome: "Comunicação",
+      linkPage: "/comunicacao",
+    },
+    {
+      nome: "Mensagens",
+      linkPage: "/mensagens",
+    },
+    {
+      nome: "Produtos",
+      linkPage: "/produtos",
+    },
+    {
+      nome: "Ferramentas",
+      linkPage: "/ferramentas",
+    },
+    {
+      nome: "Informações",
+      linkPage: "/informacoes",
+    }
   ];
 
   return (
@@ -25,11 +57,12 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-4">
             {options.map((option, index) => (
               <button
-                key={index}
-                className="bg-blue-100 text-blue-900 font-medium py-10 px-4  rounded hover:bg-blue-200 transition duration-200 "
-              >
-                {option}
-              </button>
+              key={index}
+              onClick={()=> navigate(option.linkPage)}
+              className="block bg-blue-100 text-blue-900 font-medium py-10 px-4 rounded hover:bg-blue-200 transition duration-200 text-center"
+            >
+              {option.nome}
+            </button>
             ))}
           </div>
         </div>
