@@ -5,7 +5,7 @@ import Footer from '../../components/footer';
 export default function Home() {
   const options = [
     'Clientes',
-    'Pedidos',
+    'Compras',
     'Representantes',
     'Consultas',
     'Comunicação',
