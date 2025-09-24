@@ -6,7 +6,7 @@ import {Produtos} from "../pages/produtos"
 export const Router = () => {
     return (
         <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/produtos" element={<Produtos />} />
         </Routes>
