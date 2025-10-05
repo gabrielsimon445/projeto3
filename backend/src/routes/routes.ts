@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { ativaDesativaUsuario as ativarDesativarUsuario, atualizarUsuario, criarUsuario, listarUsuarios } from "../controllers/UsuarioController";
 import { login } from "../controllers/LoginController";
-import { atualizarProduto, buscarProduto, cadastrarProduto, excluirProduto, listarProdutos } from "../controllers/ProdutoController";
+import { atualizarProduto, buscarProduto, cadastrarProduto, cadastrarProdutoPorCodigo, excluirProduto, listarProdutos } from "../controllers/ProdutoController";
 import { atualizarCompra, buscarCompra, cadastrarCompra, excluirCompra, listarCompras } from "../controllers/CompraController";
 import { atualizarItemCompra, buscarItemCompra, cadastrarItemCompra, excluirItemCompra, listarItensCompra } from "../controllers/ItemCompraController";
 
@@ -16,6 +16,7 @@ router.post("/login", login);
 
 router.get("/listarProdutos", listarProdutos);
 router.post("/criarProduto", cadastrarProduto);
+router.post("/cadastrarProdutoPorCodigo", cadastrarProdutoPorCodigo);
 router.put("/atualizarProduto/:id", atualizarProduto);
 router.delete("/excluirProduto/:id", excluirProduto);
 router.get("/procurarProduto/:id", buscarProduto);
