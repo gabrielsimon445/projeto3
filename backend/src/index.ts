@@ -5,18 +5,18 @@ import cors from "cors";
 const app = express();
 app.use(express.json());
 
-const PORT = 3000;
-const BASE_URL = `http://localhost:${PORT}`;
-const API = "/api";
-app.use(API, router);
-
-
 app.use(cors({
-  origin: BASE_URL,
+  origin: ["http://localhost:3001", "http://192.168.0.8:3001"],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 }));
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando em ${BASE_URL}`);
+const API = "/api";
+app.use(API, router);
+
+const PORT = 3000;
+const HOST = "0.0.0.0";
+const BASE_URL = `http://localhost:${PORT}`;
+app.listen(PORT, HOST, () => {
+  console.log(`Servidor rodando em ${BASE_URL} + ${HOST}`);
 });

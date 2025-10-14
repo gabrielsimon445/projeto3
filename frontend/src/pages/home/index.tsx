@@ -1,7 +1,7 @@
 import Header from '../../components/header';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Home() {
@@ -10,41 +10,13 @@ export default function Home() {
 
   const options = [
     {
-      nome: "Clientes",
-      linkPage: "/clientes",
-    },
-    {
-      nome: "Compras",
-      linkPage: "/compras",
-    },
-    {
-      nome: "Representantes",
-      linkPage: "/representantes",
-    },
-    {
-      nome: "Consultas",
-      linkPage: "/consultas",
-    },
-    {
-      nome: "Comunicação",
-      linkPage: "/comunicacao",
-    },
-    {
-      nome: "Mensagens",
-      linkPage: "/mensagens",
+      nome: "Processo de Venda",
+      linkPage: "/processo-venda",
     },
     {
       nome: "Produtos",
       linkPage: "/produtos",
     },
-    {
-      nome: "Ferramentas",
-      linkPage: "/ferramentas",
-    },
-    {
-      nome: "Informações",
-      linkPage: "/informacoes",
-    }
   ];
 
   return (
