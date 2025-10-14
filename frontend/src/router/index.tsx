@@ -9,8 +9,8 @@ import IniciarVenda from "../pages/iniciarvenda";
 export const Router = () => {
   return (
     <Routes>
+      <Route path="/" element={<Login />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/login" element={<Login />} />
       <Route path="/produtos" element={<ProdutoList />} />
       <Route path="/produtos/novo" element={<ProdutoForm />} />
       <Route path="/produtos/:id" element={<ProdutoForm />} />

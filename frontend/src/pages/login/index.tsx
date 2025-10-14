@@ -18,7 +18,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      // await handleLogin(email, senha);
+      await handleLogin(email, senha);
       navigate('/home');
     } finally {
       setLoading(false);
