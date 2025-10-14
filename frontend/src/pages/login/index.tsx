@@ -28,14 +28,14 @@ export default function Login() {
     <div className="bg-white min-h-screen flex flex-col">
       <Header />
       <Navbar />
-      <main className="flex-1 flex items-center justify-center">
-        <div className="w-full max-w-md p-8 bg-blue-50 rounded-lg shadow flex flex-col">
-          <h2 className="text-xl font-semibold text-blue-700 mb-4 text-center">Login</h2>
-          <form onSubmit={handleSubmit} className="flex flex-col flex-1">
+      <main className="flex-1 flex items-center justify-center ">
+        <div className="w-80 h-800 p-8 bg-blue-500 rounded-lg shadow flex flex-col border-2 border-blue-800 ">
+          <h2 className="text-xl font-semibold bg-blue-500 mb-16 text-center text-white">Login</h2>
+          <form onSubmit={handleSubmit} className="flex flex-col flex-1  ">
             <input
               type="text"
               placeholder="Usuário"
-              className="p-2 border border-blue-400 rounded mb-4"
+              className="p-2 border-2 border-blue-800 border rounded mb-4"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
@@ -43,7 +43,7 @@ export default function Login() {
             <input
               type="password"
               placeholder="Senha"
-              className="p-2 border border-blue-400 rounded mb-4"
+              className=" p-2 border-2 border-blue-800 rounded mb-16"
               value={senha}
               onChange={e => setSenha(e.target.value)}
               required
@@ -51,7 +51,7 @@ export default function Login() {
             <div className="flex-1" />
             <button
               type="submit"
-              className="bg-blue-700 text-white py-2 rounded hover:bg-blue-800 font-bold mt-4 disabled:opacity-50"
+              className="bg-blue-700 text-white py-2 rounded hover:bg-blue-800 font-bold mt-4 disabled:opacity-50 border-2 border-blue-800 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               disabled={loading}
             >
               {loading ? "Entrando..." : "Entrar"}
