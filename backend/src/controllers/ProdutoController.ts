@@ -164,3 +164,33 @@ export async function buscarProduto(req: Request, res: Response) {
     res.status(500).json({ error: "Erro interno do servidor." });
   }
 }
+
+export async function buscarProdutoPorCodigoBarras(req: Request, res: Response) {
+  const { codigoBarras } = req.query;
+
+  try {
+    let query = "SELECT * FROM produto WHERE codigo_barras = ? AND deleted = 0";
+    const params: any[] = [codigoBarras];
+
+    const [rows]: any = await db.query(query, params);
+
+    const produtos = rows.map((row: any) => ({
+      id: row.id,
+      nome: row.nome,
+      descricao: row.descricao,
+      tipo: row.tipo,
+      codigoBarras: row.codigo_barras,
+      preco: row.preco,
+      deleted: row.deleted
+    }));
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: "Produto não encontrado." });
+    }
+
+    res.json({ produtos });
+  } catch (error) {
+    console.error("Erro ao buscar produto:", error);
+    res.status(500).json({ error: "Erro interno do servidor." });
+  }
+}

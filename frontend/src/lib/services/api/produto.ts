@@ -107,3 +107,21 @@ export async function getProdutoBy(id: number) {
     throw error;
   }
 }
+
+export async function procurarProdutoPorCodigoBarras(codigoBarras: string) {
+  try {
+    const response = await fetch(`${URL_BASE}/procurarProdutoPorCodigoBarras?codigoBarras=${codigoBarras}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (!response.ok)
+      throw new Error(`Erro ao buscar produto: ${response.status} ${response.statusText}`);
+
+    const data = await response.json();
+    return data.produtos?.[0] ?? null;
+  } catch (error) {
+    console.error("Erro ao buscar produto por ID:", error);
+    throw error;
+  }
+}

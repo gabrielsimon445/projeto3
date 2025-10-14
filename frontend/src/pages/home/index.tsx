@@ -1,7 +1,7 @@
 import Header from '../../components/header';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Home() {
@@ -10,12 +10,8 @@ export default function Home() {
 
   const options = [
     {
-      nome: "Compras",
-      linkPage: "/compras",
-    },
-    {
-      nome: "Consultas",
-      linkPage: "/consultas",
+      nome: "Processo de Venda",
+      linkPage: "/processo-venda",
     },
     {
       nome: "Produtos",

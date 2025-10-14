@@ -1,6 +1,6 @@
 "use client";
 
-import { atualizarProduto, cadastrarProduto, deletarProduto, getProdutoBy } from "../services/api/produto";
+import { atualizarProduto, cadastrarProduto, deletarProduto, getProdutoBy, procurarProdutoPorCodigoBarras } from "../services/api/produto";
 import { ProdutoSchema } from "../validation/produtoschema";
 
 
@@ -74,5 +74,20 @@ export const getProdutoById = async (id: number) => {
   } catch (error) {
     console.error("Erro ao buscar produto:", error);
     return { success: false, message: "Erro ao buscar produto." };
+  }
+};
+
+export const getProdutoByCodigoBarras = async (codigoBarras: string) => {
+  try {
+    const produto = await procurarProdutoPorCodigoBarras(codigoBarras);
+
+    if (produto) {
+      return { success: true, data: produto };
+    }
+
+    return { success: false, message: "Produto não encontrado." };
+  } catch (error) {
+    console.error("Erro ao buscar produto:", error);
+    return { success: false, message: "Erro ao buscar produto.: " + error };
   }
 };
