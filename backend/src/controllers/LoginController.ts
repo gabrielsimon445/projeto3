@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import db from "../config/db";
+import db from "../config/firebaseconfig";
 
 const JWT_SECRET = "sua_chave_secreta";
 
