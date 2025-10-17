@@ -22,7 +22,7 @@ export default function IniciarVenda() {
   const handleScanSuccess = async (code: string) => {
     console.log("Código lido:", code);
     setLastCode(code);
-    setIsScannerOpen(false); // fecha o scanner
+    // setIsScannerOpen(false); // fecha o scanner
     setLoading(true);
     setError(null);
     setProduto(null);
@@ -32,6 +32,7 @@ export default function IniciarVenda() {
 
       if (response.success) {
         setProduto(response.data);
+        setIsScannerOpen(false);
       } else {
         setError(response.message || "Produto não encontrado.");
       }
@@ -49,57 +50,60 @@ export default function IniciarVenda() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header />
-      <Navbar />
+    <>
+      {isScannerOpen ? (
+        <BarcodeScanner
+          onScanSuccess={handleScanSuccess}
+          onClose={handleCloseScanner}
+        />
+      ) : (
+        <div className="min-h-screen flex flex-col bg-gray-50">
+          <Header />
+          <Navbar />
 
-      <main className="flex-grow px-4 py-10">
-        <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-            Iniciar Venda
-          </h2>
-
-          {isScannerOpen ? (
-            <BarcodeScanner
-              onScanSuccess={handleScanSuccess}
-              onClose={handleCloseScanner}
-            />
-          ) : (
-            <div className="text-center">
-              {lastCode && (
-                <p className="text-green-600 font-medium mb-4">
-                  Último código lido: {lastCode}
-                </p>
-              )}
-
-              {loading && <p className="text-gray-600 mb-4">Carregando produto...</p>}
-
-              {error && <p className="text-red-600 mb-4">{error}</p>}
-
-              {produto && (
-                <div className="bg-gray-100 p-4 rounded mb-4 text-left">
-                  <p>
-                    <strong>Nome:</strong> {produto.nome}
+          <main className="flex-grow px-4 py-10">
+            <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+                Iniciar Venda
+              </h2>
+              <div className="text-center">
+                {lastCode && (
+                  <p className="text-green-600 font-medium mb-4">
+                    Último código lido: {lastCode}
                   </p>
-                  <p>
-                    <strong>Preço:</strong> R$ {produto.preco.toFixed(2)}
-                  </p>
-                  {/* adicione outros campos aqui */}
-                </div>
-              )}
+                )}
 
-              <button
-                onClick={() => setIsScannerOpen(true)}
-                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-              >
-                {produto || error ? "Ler outro código" : "Iniciar Leitura"}
-              </button>
+                {loading && (
+                  <p className="text-gray-600 mb-4">Carregando produto...</p>
+                )}
+
+                {error && <p className="text-red-600 mb-4">{error}</p>}
+
+                {produto && (
+                  <div className="bg-gray-100 p-4 rounded mb-4 text-left">
+                    <p>
+                      <strong>Nome:</strong> {produto.nome}
+                    </p>
+                    <p>
+                      <strong>Preço:</strong> R$ {produto.preco.toFixed(2)}
+                    </p>
+                    {/* adicione outros campos aqui */}
+                  </div>
+                )}
+
+                <button
+                  onClick={() => setIsScannerOpen(true)}
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  {produto || error ? "Ler outro código" : "Iniciar Leitura"}
+                </button>
+              </div>
             </div>
-          )}
-        </div>
-      </main>
+          </main>
 
-      <Footer />
-    </div>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
